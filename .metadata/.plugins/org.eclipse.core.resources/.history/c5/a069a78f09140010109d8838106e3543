@@ -1,0 +1,20 @@
+package principal;
+
+public class RetornoAsync {
+	private String arquivoEncontrada;
+	private boolean achou;
+	public String getArquivoEncontrada() {
+		return arquivoEncontrada;
+	}
+	public void setArquivoEncontrada(String arquivoEncontrada) {
+		this.arquivoEncontrada = arquivoEncontrada;
+	}
+	public boolean isAchou() {
+		return achou;
+	}
+	public void setAchou(boolean achou) {
+		this.achou = achou;
+	}
+	
+	
+}

@@ -1,0 +1,24 @@
+package principal;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+public class Main {
+	public static void main(String[] args) throws IOException {
+		try (InputStream is = new FileInputStream("res/arq_1.txt")) {
+			InputStreamReader scan = new InputStreamReader(is);
+			BufferedReader br = new BufferedReader(scan);
+			String nome = br.readLine();
+
+			while (nome != null) {
+				nome = br.readLine();
+				
+			}
+		}
+		
+		
+	}
+}

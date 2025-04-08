@@ -8,7 +8,7 @@ import java.util.List;
 import util.ArquivoUtil;
 
 public class LeitorListaAsync {
-	public Long buscar(String caminhoLista, String nomeEscolhido) {
+	public DadosSaidaLeitor buscar(String caminhoLista, String nomeEscolhido) {
 		long tempoInicial = System.currentTimeMillis();
 		List<File> arquivos = ArquivoUtil.listar(caminhoLista, "txt");
 		RetornoAsync retorno = new RetornoAsync();
@@ -43,6 +43,7 @@ public class LeitorListaAsync {
 		}
 		
 		long tempoFinal = System.currentTimeMillis();
-		return tempoFinal - tempoInicial;
+
+		return new DadosSaidaLeitor("async", caminhoLista, retorno.getArquivoEncontrada(), nomeEscolhido, tempoFinal - tempoInicial);
 	}
 }

@@ -1,16 +1,18 @@
 package principal;
 
 public class ChamaLeitor {
-	public void chamar(String tipoLeitor, String caminhoLista, String nome) {
+	public DadosSaidaLeitor chamar(String tipoLeitor, String caminhoLista, String nome) {
 		if(tipoLeitor.equals("sync")) {
 			
 			LeitorListaPequena leitor = new LeitorListaPequena();
-			Long tempo = leitor.buscar(caminhoLista, nome);
-			System.out.println("Tempo de busca: "+ tempo+ " milisegundos");
+			DadosSaidaLeitor dadosSaida = leitor.buscar(caminhoLista, nome);
+			System.out.println("Tempo de busca: "+ dadosSaida.getTempo()+ " milisegundos");
+			return dadosSaida;
 		}else {
 			LeitorListaAsync leitor = new LeitorListaAsync();
-			Long tempo = leitor.buscar(caminhoLista, nome);
-			System.out.println("Tempo de busca: "+ tempo+ " milisegundos");	
+			DadosSaidaLeitor dadosSaida = leitor.buscar(caminhoLista, nome);
+			System.out.println("Tempo de busca: "+ dadosSaida.getTempo()+ " milisegundos");	
+			return dadosSaida;
 		}
 	}
 }

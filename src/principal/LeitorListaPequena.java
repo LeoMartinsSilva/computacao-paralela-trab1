@@ -12,7 +12,7 @@ import java.util.List;
 import util.ArquivoUtil;
 
 public class LeitorListaPequena {
-	public Long buscar(String caminhoLista, String nomeEscolhido) {
+	public DadosSaidaLeitor buscar(String caminhoLista, String nomeEscolhido) {
 		long tempoInicial = System.currentTimeMillis();
 		List<File> arquivos = ArquivoUtil.listar(caminhoLista, "txt");
 		boolean achou = false;
@@ -49,6 +49,7 @@ public class LeitorListaPequena {
 			System.out.println("Não achou");
 		}
 		long tempoFinal = System.currentTimeMillis();
-		return tempoFinal - tempoInicial;
+
+		return new DadosSaidaLeitor("sync", caminhoLista, arquivoOndeEncontrou, nomeEscolhido, tempoFinal - tempoInicial);
 	}
 }

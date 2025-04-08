@@ -1,4 +1,0 @@
-INDEX VERSION 1.134+C:\Users\leona\ws-computacao\.metadata\.plugins\org.eclipse.jdt.core
-659924619.index
-3413725848.index
-1865797976.index

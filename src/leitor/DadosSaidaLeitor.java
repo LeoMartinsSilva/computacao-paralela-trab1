@@ -1,4 +1,4 @@
-package principal;
+package leitor;
 
 public class DadosSaidaLeitor {
 	private String modoDeBusca;

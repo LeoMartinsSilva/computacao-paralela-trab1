@@ -11,6 +11,8 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
+import leitor.ChamaLeitor;
+import leitor.DadosSaidaLeitor;
 import view.GUI;
 import view.RadioButtonOption;
 import view.RadioButtonSelected;
@@ -27,7 +29,9 @@ public class Main {
 		gui.setSelectedArquivo(new RadioButtonSelected("res/P"));
 		gui.getBotaoBuscar().addActionListener(e -> {
 			ChamaLeitor chamaLeitor = new ChamaLeitor();
-			dadosSaida.add(chamaLeitor.chamar(gui.getSelectedModo().getValue(), gui.getSelectedArquivo().getValue(), gui.getTextNome().getText()));
+			DadosSaidaLeitor retorno = chamaLeitor.chamar(gui.getSelectedModo().getValue(), gui.getSelectedArquivo().getValue(), gui.getTextNome().getText());
+			dadosSaida.add(retorno);
+			gui.showPopup("Nome encontrado no arquivo "+ retorno.getArquivo()+ " em "+retorno.getTempo()+ " milisegundos");
         });
 		
 		gui.getBotaoExportar().addActionListener(e -> exportarCsv(dadosSaida));

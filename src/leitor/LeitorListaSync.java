@@ -1,4 +1,4 @@
-package principal;
+package leitor;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -11,7 +11,7 @@ import java.util.List;
 
 import util.ArquivoUtil;
 
-public class LeitorListaPequena {
+public class LeitorListaSync {
 	public DadosSaidaLeitor buscar(String caminhoLista, String nomeEscolhido) {
 		long tempoInicial = System.currentTimeMillis();
 		List<File> arquivos = ArquivoUtil.listar(caminhoLista, "txt");

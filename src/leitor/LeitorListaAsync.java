@@ -1,4 +1,4 @@
-package principal;
+package leitor;
 
 import java.io.File;
 import java.lang.Thread.State;

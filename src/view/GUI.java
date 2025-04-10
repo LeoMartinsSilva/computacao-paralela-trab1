@@ -9,12 +9,14 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 public class GUI extends JFrame {
 	private JPanel panelPrincipal;
+	private JPanel panelBotoes;
 	private JPanel panelConteudo;
 	private JPanel panelOpcoesModo;
 	private JPanel panelOpcoesArquivo;
@@ -33,6 +35,9 @@ public class GUI extends JFrame {
 		
 		panelConteudo = new JPanel();
 		panelConteudo.setLayout(new GridLayout(3, 1));
+		
+		panelBotoes = new JPanel();
+		panelBotoes.setLayout(new GridLayout());
 		
         
         panelOpcoesModo = new JPanel();
@@ -54,15 +59,21 @@ public class GUI extends JFrame {
         panelConteudo.add(panelOpcoesArquivo);
         panelConteudo.add(panelNome);
         
+        panelBotoes.add(botaoExportar);
+        panelBotoes.add(botaoBuscar);
+        
         panelPrincipal.add(panelConteudo);
-        panelPrincipal.add(botaoBuscar, BorderLayout.SOUTH);
-        panelPrincipal.add(botaoExportar, BorderLayout.LINE_END);
+        panelPrincipal.add(panelBotoes, BorderLayout.SOUTH);
         this.add(panelPrincipal);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.setSize(800, 600);
         this.setResizable(false);
         this.setVisible(true);
+	}
+	
+	public void showPopup(String msg) {
+		JOptionPane.showMessageDialog(this, msg, "Busca realizada", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 	private void montarRadioButtons(JPanel panel, List<RadioButtonOption> opcoes, RadioButtonSelected selected) {

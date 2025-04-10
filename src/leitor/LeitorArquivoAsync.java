@@ -1,4 +1,4 @@
-package principal;
+package leitor;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -12,7 +12,7 @@ public class LeitorArquivoAsync implements Runnable {
 
 	private File arquivo;
 	private String nomeEscolhido;
-	private RetornoAsync retorno; 
+	private RetornoAsync retorno;
 	
 	@Override
 	public void run() {

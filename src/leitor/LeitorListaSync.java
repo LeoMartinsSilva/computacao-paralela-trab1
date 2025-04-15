@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
 
+import model.DadosSaidaLeitor;
 import util.ArquivoUtil;
 
 public class LeitorListaSync {

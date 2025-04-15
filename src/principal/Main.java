@@ -12,7 +12,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
 import leitor.ChamaLeitor;
-import leitor.DadosSaidaLeitor;
+import model.DadosSaidaLeitor;
 import view.GUI;
 import view.RadioButtonOption;
 import view.RadioButtonSelected;
@@ -23,7 +23,12 @@ public class Main {
 		
 		GUI gui = new GUI();
 		
-		gui.setOptionsModo(List.of(new RadioButtonOption("sync", "Sincrono"), new RadioButtonOption("async", "Assincrono")));
+		gui.setOptionsModo(List.of(
+				new RadioButtonOption("sync", "Sincrono"), 
+				new RadioButtonOption("async", "Assincrono"), 
+				new RadioButtonOption("async2PorArquivo", "Assincrono 2 por arquivo"),
+				new RadioButtonOption("async2PorArquivo", "Assincrono com merge sort")
+		));
 		gui.setSelectedModo(new RadioButtonSelected("sync"));
 		gui.setOptionsArquivo(List.of(new RadioButtonOption("res/P", "Pequeno"), new RadioButtonOption("res/G", "Grande")));
 		gui.setSelectedArquivo(new RadioButtonSelected("res/P"));

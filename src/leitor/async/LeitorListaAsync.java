@@ -1,10 +1,12 @@
-package leitor;
+package leitor.async;
 
 import java.io.File;
 import java.lang.Thread.State;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.DadosSaidaLeitor;
+import model.RetornoAsync;
 import util.ArquivoUtil;
 
 public class LeitorListaAsync {

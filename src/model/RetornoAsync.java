@@ -1,4 +1,4 @@
-package leitor;
+package model;
 
 public class RetornoAsync {
 	private String arquivoEncontrada;

@@ -21,6 +21,11 @@ public class ChamaLeitor {
 			DadosSaidaLeitor dadosSaida = leitor.buscar(caminhoLista, nome);
 			System.out.println("Tempo de busca: "+ dadosSaida.getTempo()+ " milisegundos");
 			return dadosSaida;
+		} else if (tipoLeitor.equals("asyncComMap")){ 
+			leitor.asyncComMap.LeitorListaAsync leitor = new leitor.asyncComMap.LeitorListaAsync();
+			DadosSaidaLeitor dadosSaida = leitor.buscar(caminhoLista, nome);
+			System.out.println("Tempo de busca: "+ dadosSaida.getTempo()+ " milisegundos");
+			return dadosSaida;
 		} else {
 			return null;
 		}

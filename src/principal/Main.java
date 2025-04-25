@@ -12,6 +12,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
 import leitor.ChamaLeitor;
+import leitor.ExecucaoMultipla;
 import model.DadosSaidaLeitor;
 import view.GUI;
 import view.RadioButtonOption;
@@ -27,7 +28,7 @@ public class Main {
 				new RadioButtonOption("sync", "Sincrono"), 
 				new RadioButtonOption("async", "Assincrono"), 
 				new RadioButtonOption("async2PorArquivo", "Assincrono 2 por arquivo"),
-				new RadioButtonOption("async2PorArquivo", "Assincrono com merge sort")
+				new RadioButtonOption("asyncComMap", "Assincrono com Map")
 		));
 		gui.setSelectedModo(new RadioButtonSelected("sync"));
 		gui.setOptionsArquivo(List.of(new RadioButtonOption("res/P", "Pequeno"), new RadioButtonOption("res/G", "Grande")));
@@ -36,10 +37,22 @@ public class Main {
 			ChamaLeitor chamaLeitor = new ChamaLeitor();
 			DadosSaidaLeitor retorno = chamaLeitor.chamar(gui.getSelectedModo().getValue(), gui.getSelectedArquivo().getValue(), gui.getTextNome().getText());
 			dadosSaida.add(retorno);
-			gui.showPopup("Nome encontrado no arquivo "+ retorno.getArquivo()+ " em "+retorno.getTempo()+ " milisegundos");
+			if(retorno.getArquivo() == null) {
+				gui.showPopup("Nome não encontrado. Tempo Gasto: "+retorno.getTempo()+ " milisegundos");
+			}else {
+				gui.showPopup("Nome encontrado no arquivo "+ retorno.getArquivo()+ " em "+retorno.getTempo()+ " milisegundos");
+			}
         });
 		
 		gui.getBotaoExportar().addActionListener(e -> exportarCsv(dadosSaida));
+		
+		
+		ExecucaoMultipla execucaoMultipla = new ExecucaoMultipla();
+		gui.getBotaoExecutarVarios().addActionListener(e -> {
+			List<DadosSaidaLeitor> retorno = execucaoMultipla.executar(50);
+			dadosSaida.addAll(retorno);
+			
+		});
 		
 		gui.montar();
 	}

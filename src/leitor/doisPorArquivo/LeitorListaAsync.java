@@ -73,7 +73,7 @@ public class LeitorListaAsync {
 
 		long tempoFinal = System.currentTimeMillis();
 
-		return new DadosSaidaLeitor("async", caminhoLista, retorno.getArquivoEncontrada(), nomeEscolhido,
+		return new DadosSaidaLeitor("async2PorArquivo", caminhoLista, retorno.getArquivoEncontrada(), nomeEscolhido,
 				tempoFinal - tempoInicial);
 	}
 }

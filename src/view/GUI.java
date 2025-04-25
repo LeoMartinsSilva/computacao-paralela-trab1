@@ -16,7 +16,6 @@ import javax.swing.JTextField;
 
 public class GUI extends JFrame {
 	private JPanel panelPrincipal;
-	private JPanel panelBotoes;
 	private JPanel panelConteudo;
 	private JPanel panelOpcoesModo;
 	private JPanel panelOpcoesArquivo;
@@ -24,6 +23,7 @@ public class GUI extends JFrame {
 	private JTextField textNome;
 	private RadioButtonSelected selectedModo;
 	private RadioButtonSelected selectedArquivo;
+	private JButton botaoExecutarVarios = new JButton("Executar vários");
 	private JButton botaoExportar = new JButton("Exportar");
 	private JButton botaoBuscar = new JButton("Buscar");
 	private List<RadioButtonOption> optionsModo;
@@ -36,10 +36,6 @@ public class GUI extends JFrame {
 		panelConteudo = new JPanel();
 		panelConteudo.setLayout(new GridLayout(3, 1));
 		
-		panelBotoes = new JPanel();
-		panelBotoes.setLayout(new GridLayout());
-		
-        
         panelOpcoesModo = new JPanel();
         panelOpcoesModo.setLayout(new FlowLayout());
         panelOpcoesModo.add(new JLabel("Modo de execução: "));
@@ -59,11 +55,15 @@ public class GUI extends JFrame {
         panelConteudo.add(panelOpcoesArquivo);
         panelConteudo.add(panelNome);
         
-        panelBotoes.add(botaoExportar);
-        panelBotoes.add(botaoBuscar);
+        botaoExecutarVarios.setBounds(325, 500, 150, 50);
+        botaoExportar.setBounds(100, 500, 100, 50);
+        botaoBuscar.setBounds(600, 500, 100, 50);
+        
+        panelPrincipal.add(botaoExecutarVarios);
+        panelPrincipal.add(botaoExportar);
+        panelPrincipal.add(botaoBuscar);
         
         panelPrincipal.add(panelConteudo);
-        panelPrincipal.add(panelBotoes, BorderLayout.SOUTH);
         this.add(panelPrincipal);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -110,6 +110,10 @@ public class GUI extends JFrame {
 
 	public JButton getBotaoBuscar() {
 		return botaoBuscar;
+	}
+
+	public JButton getBotaoExecutarVarios() {
+		return botaoExecutarVarios;
 	}
 
 	public JTextField getTextNome() {

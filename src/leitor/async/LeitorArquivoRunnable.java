@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 
 import model.RetornoAsync;
 
-public class LeitorArquivoAsync implements Runnable {
+public class LeitorArquivoRunnable implements Runnable {
 
 	private File arquivo;
 	private String nomeEscolhido;

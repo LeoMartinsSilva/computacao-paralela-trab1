@@ -11,7 +11,7 @@ import model.DadosSaidaLeitor;
 import model.RetornoAsync;
 import util.ArquivoUtil;
 
-public class LeitorListaAsync {
+public class LeitorAsync {
 	public DadosSaidaLeitor buscar(String caminhoLista, String nomeEscolhido) {
 		long tempoInicial = System.currentTimeMillis();
 		List<File> arquivos = ArquivoUtil.listar(caminhoLista, "txt");
@@ -25,7 +25,7 @@ public class LeitorListaAsync {
 
 				List<String> nomes = List.of(dados.split("\r\n"));
 
-				LeitorParImparAsync leitor = new LeitorParImparAsync();
+				LeitorParImparRunnable leitor = new LeitorParImparRunnable();
 				leitor.setNomes(nomes);
 				leitor.setPathArquivo(arquivo.getPath());
 				leitor.setNomeEscolhido(nomeEscolhido);
@@ -36,7 +36,7 @@ public class LeitorListaAsync {
 				t.start();
 				threads.add(t);
 				
-				LeitorParImparAsync leitorPar = new LeitorParImparAsync();
+				LeitorParImparRunnable leitorPar = new LeitorParImparRunnable();
 				leitorPar.setNomes(nomes);
 				leitorPar.setPathArquivo(arquivo.getPath());
 				leitorPar.setNomeEscolhido(nomeEscolhido);

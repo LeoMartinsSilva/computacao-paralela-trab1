@@ -1,6 +1,6 @@
 package leitor;
 
-import leitor.async.LeitorListaAsync;
+import leitor.async.LeitorAsync;
 import model.DadosSaidaLeitor;
 
 public class ChamaLeitor {
@@ -12,17 +12,17 @@ public class ChamaLeitor {
 			System.out.println("Tempo de busca: "+ dadosSaida.getTempo()+ " milisegundos");
 			return dadosSaida;
 		}else if(tipoLeitor.equals("async")){
-			LeitorListaAsync leitor = new LeitorListaAsync();
+			LeitorAsync leitor = new LeitorAsync();
 			DadosSaidaLeitor dadosSaida = leitor.buscar(caminhoLista, nome);
 			System.out.println("Tempo de busca: "+ dadosSaida.getTempo()+ " milisegundos");	
 			return dadosSaida;
 		} else if(tipoLeitor.equals("async2PorArquivo")) {
-			leitor.doisPorArquivo.LeitorListaAsync leitor = new leitor.doisPorArquivo.LeitorListaAsync();
+			leitor.doisPorArquivo.LeitorAsync leitor = new leitor.doisPorArquivo.LeitorAsync();
 			DadosSaidaLeitor dadosSaida = leitor.buscar(caminhoLista, nome);
 			System.out.println("Tempo de busca: "+ dadosSaida.getTempo()+ " milisegundos");
 			return dadosSaida;
 		} else if (tipoLeitor.equals("asyncComMap")){ 
-			leitor.asyncComMap.LeitorListaAsync leitor = new leitor.asyncComMap.LeitorListaAsync();
+			leitor.asyncComMap.LeitorAsync leitor = new leitor.asyncComMap.LeitorAsync();
 			DadosSaidaLeitor dadosSaida = leitor.buscar(caminhoLista, nome);
 			System.out.println("Tempo de busca: "+ dadosSaida.getTempo()+ " milisegundos");
 			return dadosSaida;

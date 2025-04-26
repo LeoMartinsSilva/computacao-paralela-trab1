@@ -9,14 +9,14 @@ import model.DadosSaidaLeitor;
 import model.RetornoAsync;
 import util.ArquivoUtil;
 
-public class LeitorListaAsync {
+public class LeitorAsync {
 	public DadosSaidaLeitor buscar(String caminhoLista, String nomeEscolhido) {
 		long tempoInicial = System.currentTimeMillis();
 		List<File> arquivos = ArquivoUtil.listar(caminhoLista, "txt");
 		RetornoAsync retorno = new RetornoAsync();
 		List<Thread> threads = new ArrayList<Thread>();
 		for (File arquivo : arquivos) {
-			LeitorArquivoAsync leitor = new LeitorArquivoAsync();
+			LeitorArquivoRunnable leitor = new LeitorArquivoRunnable();
 			leitor.setArquivo(arquivo);
 			leitor.setNomeEscolhido(nomeEscolhido);
 			leitor.setRetorno(retorno);

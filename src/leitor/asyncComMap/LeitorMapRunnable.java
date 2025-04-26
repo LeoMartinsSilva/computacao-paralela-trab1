@@ -8,12 +8,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class LeitorMapAsync implements Runnable {
+public class LeitorMapRunnable implements Runnable {
 
 	private File arquivo;
-	private Map<String, String> map;
+	private List<Map<String, String>> list;
 
 	@Override
 	public void run() {
@@ -30,7 +31,7 @@ public class LeitorMapAsync implements Runnable {
 				mapInterno.put(nome, nomeArquivo);
 				nome = br.readLine();
 			}
-			map.putAll(mapInterno);
+			list.add(mapInterno);
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -41,23 +42,20 @@ public class LeitorMapAsync implements Runnable {
 		}
 
 	}
-	
-	
-
-	public Map<String, String> getMap() {
-		return map;
-	}
-
-
-
-	public void setMap(Map<String, String> map) {
-		this.map = map;
-	}
-
 
 	public File getArquivo() {
 		return arquivo;
 	}
+
+	public List<Map<String, String>> getList() {
+		return list;
+	}
+
+	public void setList(List<Map<String, String>> list) {
+		this.list = list;
+	}
+
+
 
 	public void setArquivo(File arquivo) {
 		this.arquivo = arquivo;

@@ -4,7 +4,7 @@ import java.util.List;
 
 import model.RetornoAsync;
 
-public class LeitorParImparAsync implements Runnable {
+public class LeitorParImparRunnable implements Runnable {
 
 	private List<String> nomes;
 	private String pathArquivo;

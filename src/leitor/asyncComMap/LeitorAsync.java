@@ -3,22 +3,21 @@ package leitor.asyncComMap;
 import java.io.File;
 import java.lang.Thread.State;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import model.DadosSaidaLeitor;
 import util.ArquivoUtil;
 
-public class LeitorListaAsync {
+public class LeitorAsync {
 	public DadosSaidaLeitor buscar(String caminhoLista, String nomeEscolhido) {
 		long tempoInicial = System.currentTimeMillis();
 		List<File> arquivos = ArquivoUtil.listar(caminhoLista, "txt");
-		Map<String, String> map = new HashMap<String, String>();
+		List<Map<String, String>> list = new ArrayList<Map<String,String>>();
 		List<Thread> threads = new ArrayList<Thread>();
 		for (File arquivo : arquivos) {
-			LeitorMapAsync leitor = new LeitorMapAsync();
-			leitor.setMap(map);
+			LeitorMapRunnable leitor = new LeitorMapRunnable();
+			leitor.setList(list);
 			leitor.setArquivo(arquivo);
 				
 			Thread t = new Thread(leitor);
@@ -36,7 +35,13 @@ public class LeitorListaAsync {
 			}
 		}
 		
-		String arquivoEncontrado = map.get(nomeEscolhido);
+		String arquivoEncontrado = null;
+		for(Map<String, String> map : list) {
+			arquivoEncontrado = map.get(nomeEscolhido);
+			if (arquivoEncontrado!=null) {
+				break;
+			}
+		}
 
 		if (arquivoEncontrado!=null) {
 			System.out.println("Achou no arquivo " + arquivoEncontrado);
